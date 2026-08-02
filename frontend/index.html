@@ -3,134 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🦷 Clínica Dental - Agende Agora</title>
-  <!-- Google Fonts para um visual mais clean -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <title>🦷 Clínica Dental</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
   <style>
-    /* ===== RESET E BASE ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
+    /* ----- RESET E BASE ----- */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
     body {
       min-height: 100vh;
-      background: linear-gradient(145deg, #f9f3ff 0%, #e6f0fa 100%);
+      background: linear-gradient(145deg, #f0f7ff, #e0ecf9);
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px;
     }
-
-    /* ===== CONTAINER PRINCIPAL ===== */
-    .app-container {
+    .app {
       max-width: 1200px;
       width: 100%;
-      background: rgba(255, 255, 255, 0.75);
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
       border-radius: 48px;
-      padding: 35px 40px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      transition: 0.3s;
+      padding: 30px 35px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.6);
     }
-
-    /* ===== HEADER ===== */
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
-
-    .header-left h1 {
+    .header h1 {
       font-size: 32px;
       font-weight: 700;
       background: linear-gradient(135deg, #0b3b5c, #2a7faa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
-      display: inline-block;
     }
-
-    .header-left p {
-      color: #3a5a6e;
-      font-weight: 500;
-      font-size: 16px;
-      margin-top: 4px;
-    }
-
-    .header-badge {
+    .header .badge {
       background: linear-gradient(135deg, #ff7eb3, #ff758c);
-      padding: 8px 20px;
+      padding: 6px 20px;
       border-radius: 40px;
       color: white;
       font-weight: 700;
       font-size: 14px;
-      box-shadow: 0 8px 20px rgba(255, 117, 140, 0.3);
+      box-shadow: 0 6px 16px rgba(255,117,140,0.3);
       animation: pulse 2s infinite;
     }
-
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.05); }
       100% { transform: scale(1); }
     }
-
-    /* ===== GRID (FORM + CHAT) ===== */
-    .grid-2 {
+    .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 30px;
     }
+    @media (max-width: 850px) { .grid { grid-template-columns: 1fr; } }
 
-    @media (max-width: 850px) {
-      .grid-2 {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .app-container {
-        padding: 25px 20px;
-      }
-    }
-
-    /* ===== FORMULÁRIO ===== */
-    .form-card {
+    /* ----- FORMULÁRIO ----- */
+    .card {
       background: white;
       border-radius: 32px;
-      padding: 28px 24px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
       border: 1px solid #e9f0f8;
     }
-
-    .form-card h2 {
-      font-size: 22px;
+    .card h2 {
+      font-size: 20px;
       color: #0b3b5c;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
-
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
-
     .form-group label {
       display: block;
       font-weight: 600;
       font-size: 14px;
       color: #1e3d52;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
-
-    .form-group input,
-    .form-group select {
+    .form-group input, .form-group select {
       width: 100%;
       padding: 12px 16px;
       border: 2px solid #dfeaf3;
@@ -139,127 +97,83 @@
       background: #fafdff;
       transition: 0.2s;
     }
-
-    .form-group input:focus,
-    .form-group select:focus {
+    .form-group input:focus, .form-group select:focus {
       border-color: #2a7faa;
       outline: none;
-      box-shadow: 0 0 0 4px rgba(42, 127, 170, 0.15);
-      background: white;
+      box-shadow: 0 0 0 4px rgba(42,127,170,0.15);
     }
-
     .btn-primary {
       background: linear-gradient(135deg, #0b3b5c, #1f668f);
       color: white;
       border: none;
-      padding: 14px 20px;
+      padding: 14px;
       border-radius: 40px;
-      font-size: 16px;
       font-weight: 700;
       width: 100%;
       cursor: pointer;
       transition: 0.3s;
-      box-shadow: 0 6px 18px rgba(11, 59, 92, 0.25);
+      box-shadow: 0 6px 18px rgba(11,59,92,0.25);
     }
-
     .btn-primary:hover {
-      transform: translateY(-3px) scale(1.01);
-      box-shadow: 0 10px 28px rgba(11, 59, 92, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(11,59,92,0.35);
     }
-
-    .btn-primary:active {
-      transform: scale(0.97);
-    }
-
     .success-msg {
       background: #d4edda;
       color: #155724;
-      padding: 14px;
+      padding: 12px;
       border-radius: 16px;
-      margin-top: 16px;
+      margin-top: 14px;
       text-align: center;
       font-weight: 600;
-      animation: fadeIn 0.5s;
+      display: none;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ===== LISTA DE AGENDAMENTOS ===== */
-    .appointments-section {
-      margin-top: 30px;
-      padding-top: 20px;
+    .appointments-list {
+      margin-top: 25px;
+      padding-top: 18px;
       border-top: 2px dashed #dce7f0;
     }
-
-    .appointments-section h3 {
-      font-size: 18px;
+    .appointments-list h3 {
+      font-size: 17px;
       color: #0b3b5c;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      margin-bottom: 12px;
     }
-
     .appointment-item {
       background: #f8fcff;
-      border-radius: 16px;
-      padding: 14px 18px;
-      margin-bottom: 10px;
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin-bottom: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-left: 6px solid #2a7faa;
+      border-left: 5px solid #2a7faa;
       transition: 0.2s;
     }
-
     .appointment-item:hover {
       background: #eef6fe;
       transform: translateX(4px);
     }
-
-    .appointment-item .info .name {
-      font-weight: 700;
-      color: #1e3d52;
-    }
-
-    .appointment-item .info .details {
-      font-size: 13px;
-      color: #4a6a7f;
-    }
-
-    .appointment-item .remove-btn {
+    .appointment-item .info .name { font-weight: 700; color: #1e3d52; }
+    .appointment-item .info .details { font-size: 13px; color: #4a6a7f; }
+    .remove-btn {
       background: #fce4e4;
       border: none;
-      padding: 6px 14px;
+      padding: 4px 14px;
       border-radius: 30px;
       color: #b33a3a;
       font-weight: 700;
       cursor: pointer;
-      transition: 0.2s;
     }
+    .remove-btn:hover { background: #f5c2c2; }
 
-    .appointment-item .remove-btn:hover {
-      background: #f5c2c2;
-      transform: scale(1.05);
-    }
-
-    /* ===== BOT DE OPÇÕES (CHAT) ===== */
+    /* ----- CHAT BOT ----- */
     .chat-card {
-      background: white;
-      border-radius: 32px;
-      padding: 24px 22px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-      border: 1px solid #e9f0f8;
       display: flex;
       flex-direction: column;
       height: 100%;
-      min-height: 500px;
+      min-height: 460px;
     }
-
-    .chat-card .chat-title {
+    .chat-title {
       font-size: 20px;
       font-weight: 700;
       color: #0b3b5c;
@@ -268,10 +182,9 @@
       align-items: center;
       gap: 10px;
     }
-
     .chat-messages {
       flex: 1;
-      max-height: 350px;
+      max-height: 320px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
@@ -279,84 +192,66 @@
       margin-bottom: 14px;
       padding-right: 4px;
     }
-
     .message {
-      padding: 12px 18px;
+      padding: 10px 16px;
       border-radius: 20px;
       max-width: 88%;
       font-size: 14px;
       line-height: 1.5;
       animation: fadeIn 0.3s;
-      word-break: break-word;
     }
-
     .message.bot {
       background: #eef3f9;
       color: #1e3d52;
       align-self: flex-start;
       border-bottom-left-radius: 6px;
     }
-
     .message.user {
       background: linear-gradient(135deg, #0b3b5c, #1f668f);
       color: white;
       align-self: flex-end;
       border-bottom-right-radius: 6px;
     }
-
     .options-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 8px;
     }
-
     .option-btn {
       background: white;
       border: 2px solid #2a7faa;
       color: #0b3b5c;
-      padding: 8px 18px;
+      padding: 6px 16px;
       border-radius: 40px;
       font-weight: 600;
       font-size: 13px;
       cursor: pointer;
       transition: 0.2s;
-      flex: 0 1 auto;
     }
-
     .option-btn:hover {
       background: #2a7faa;
       color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(42, 127, 170, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(42,127,170,0.3);
     }
-
-    .option-btn:active {
-      transform: scale(0.95);
-    }
-
     .chat-input-area {
       display: flex;
       gap: 10px;
-      margin-top: 6px;
     }
-
     .chat-input-area input {
       flex: 1;
-      padding: 12px 18px;
+      padding: 10px 16px;
       border: 2px solid #dfeaf3;
       border-radius: 40px;
       font-size: 14px;
       background: #fafdff;
-      transition: 0.2s;
     }
-
     .chat-input-area input:focus {
       border-color: #2a7faa;
       outline: none;
-      box-shadow: 0 0 0 4px rgba(42, 127, 170, 0.1);
+      box-shadow: 0 0 0 4px rgba(42,127,170,0.1);
     }
-
     .chat-input-area button {
       background: linear-gradient(135deg, #ff7eb3, #ff758c);
       border: none;
@@ -366,49 +261,34 @@
       font-weight: 700;
       cursor: pointer;
       transition: 0.3s;
-      box-shadow: 0 4px 12px rgba(255, 117, 140, 0.3);
+      box-shadow: 0 4px 12px rgba(255,117,140,0.3);
     }
-
     .chat-input-area button:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(255, 117, 140, 0.4);
     }
-
-    /* ===== SCROLLBAR ===== */
-    .chat-messages::-webkit-scrollbar {
-      width: 5px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .chat-messages::-webkit-scrollbar-track {
-      background: #eef3f9;
-      border-radius: 10px;
-    }
-    .chat-messages::-webkit-scrollbar-thumb {
-      background: #2a7faa;
-      border-radius: 10px;
-    }
+    .chat-messages::-webkit-scrollbar { width: 5px; }
+    .chat-messages::-webkit-scrollbar-track { background: #eef3f9; border-radius: 10px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: #2a7faa; border-radius: 10px; }
   </style>
 </head>
 <body>
-
-<div class="app-container">
-  <!-- HEADER -->
+<div class="app">
   <div class="header">
-    <div class="header-left">
-      <h1>🦷 Clínica Dental</h1>
-      <p>Agendamento inteligente com assistente virtual</p>
-    </div>
-    <div class="header-badge">✨ Atendimento humanizado</div>
+    <h1>🦷 Clínica Dental</h1>
+    <span class="badge">✨ Atendimento humanizado</span>
   </div>
-
-  <!-- GRID -->
-  <div class="grid-2">
-    <!-- COLUDA ESQUERDA: FORMULÁRIO -->
-    <div class="form-card">
-      <h2>📋 Preencha seus dados</h2>
-      <form id="appointmentForm">
+  <div class="grid">
+    <!-- FORMULÁRIO -->
+    <div class="card">
+      <h2>📋 Agendamento</h2>
+      <form id="form">
         <div class="form-group">
-          <label>Nome completo *</label>
-          <input type="text" id="name" required placeholder="Ex: Ana Silva" />
+          <label>Nome *</label>
+          <input type="text" id="name" required placeholder="Seu nome" />
         </div>
         <div class="form-group">
           <label>Telefone</label>
@@ -435,30 +315,25 @@
         </div>
         <div class="form-group">
           <label>Valor (R$)</label>
-          <input type="number" id="price" step="0.01" readonly placeholder="Será preenchido automaticamente" />
+          <input type="number" id="price" step="0.01" readonly />
         </div>
-        <button type="submit" class="btn-primary">✅ Agendar agora</button>
+        <button type="submit" class="btn-primary">✅ Agendar</button>
+        <div id="feedback" class="success-msg">✔️ Agendamento salvo!</div>
       </form>
-      <div id="formFeedback" style="display: none;" class="success-msg">✔️ Agendamento realizado com sucesso!</div>
 
-      <!-- Lista de agendamentos -->
-      <div class="appointments-section">
+      <div class="appointments-list">
         <h3>📋 Meus agendamentos</h3>
-        <div id="appointmentList">
-          <p style="color: #4a6a7f; font-size: 14px;">Nenhum agendamento ainda.</p>
-        </div>
+        <div id="list"></div>
       </div>
     </div>
 
-    <!-- COLUNA DIREITA: CHAT BOT -->
-    <div class="chat-card">
+    <!-- CHAT BOT -->
+    <div class="card chat-card">
       <div class="chat-title">💬 Assistente Dental</div>
-      <div id="chatMessages" class="chat-messages">
-        <!-- Mensagens serão inseridas aqui pelo JS -->
-      </div>
+      <div id="chatMessages" class="chat-messages"></div>
       <div class="chat-input-area">
-        <input type="text" id="chatInput" placeholder="Digite algo..." />
-        <button id="chatSendBtn">Enviar</button>
+        <input type="text" id="chatInput" placeholder="Digite..." />
+        <button id="chatSend">Enviar</button>
       </div>
     </div>
   </div>
@@ -466,19 +341,18 @@
 
 <script>
   // ============================================================
-  //  CONFIGURAÇÕES DA API (backend)
+  //  CONFIGURAÇÕES
   // ============================================================
-  const API_URL = 'http://localhost:5000/api/appointments'; // Altere para seu backend
+  const STORAGE_KEY = 'appointments';
 
   // ============================================================
-  //  ESTADO DO CHAT (Bot de opções)
+  //  FORMULÁRIO (salva no localStorage)
   // ============================================================
-  let chatStep = 0;
-  let selectedTreatment = null;
-  let selectedUrgency = null;
-  const chatMessagesEl = document.getElementById('chatMessages');
+  const form = document.getElementById('form');
+  const feedback = document.getElementById('feedback');
+  const listEl = document.getElementById('list');
 
-  // Mapeamento de preços para sugestão
+  // Preço automático
   const priceMap = {
     'Limpeza Profissional': 120,
     'Clareamento a Laser': 450,
@@ -486,194 +360,43 @@
     'Extração Simples': 200,
     'Consulta + Avaliação': 150,
   };
-
-  // Opções do bot (árvore de decisão)
-  const chatOptions = {
-    0: {
-      text: 'Olá! 👋 Sou seu assistente. Qual tipo de tratamento você procura?',
-      choices: [
-        { label: '🦷 Limpeza', value: 'Limpeza Profissional' },
-        { label: '🦷 Clareamento', value: 'Clareamento a Laser' },
-        { label: '🦷 Restauração', value: 'Restauração com Resina' },
-        { label: '🦷 Extração', value: 'Extração Simples' },
-        { label: '🦷 Outro', value: 'Consulta + Avaliação' },
-      ],
-    },
-    1: {
-      text: 'Qual a urgência?',
-      choices: [
-        { label: '🔴 Urgente (hoje)', value: 'urgente' },
-        { label: '🟡 Normal (essa semana)', value: 'normal' },
-        { label: '🟢 Sem pressa', value: 'tranquilo' },
-      ],
-    },
-    2: {
-      text: 'Ótimo! Com base nas suas respostas, sugiro:',
-      choices: [
-        { label: '✅ Confirmar sugestão', value: 'confirm' },
-        { label: '🔄 Recomeçar', value: 'reset' },
-      ],
-    },
-  };
-
-  // Inicializa o chat com a primeira mensagem
-  function initChat() {
-    chatMessagesEl.innerHTML = '';
-    addBotMessage(chatOptions[0].text, chatOptions[0].choices);
-    chatStep = 0;
-  }
-
-  function addBotMessage(text, choices = null) {
-    const div = document.createElement('div');
-    div.className = 'message bot';
-    div.innerHTML = text;
-    if (choices) {
-      const grid = document.createElement('div');
-      grid.className = 'options-grid';
-      choices.forEach((choice) => {
-        const btn = document.createElement('button');
-        btn.className = 'option-btn';
-        btn.textContent = choice.label;
-        btn.dataset.value = choice.value;
-        btn.addEventListener('click', () => handleChatChoice(choice.value, choice.label));
-        grid.appendChild(btn);
-      });
-      div.appendChild(grid);
-    }
-    chatMessagesEl.appendChild(div);
-    chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
-  }
-
-  function addUserMessage(text) {
-    const div = document.createElement('div');
-    div.className = 'message user';
-    div.textContent = text;
-    chatMessagesEl.appendChild(div);
-    chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
-  }
-
-  // Lida com as escolhas do usuário (botões)
-  function handleChatChoice(value, label) {
-    addUserMessage(label);
-
-    if (chatStep === 0) {
-      selectedTreatment = value;
-      chatStep = 1;
-      setTimeout(() => {
-        addBotMessage(chatOptions[1].text, chatOptions[1].choices);
-      }, 400);
-    } else if (chatStep === 1) {
-      selectedUrgency = value;
-      chatStep = 2;
-      // Calcula sugestão
-      let basePrice = priceMap[selectedTreatment] || 150;
-      if (value === 'urgente') basePrice += 80;
-      const sugLabel = selectedTreatment;
-      const sugPrice = basePrice;
-      setTimeout(() => {
-        const msg = `💡 Sugestão: **${sugLabel}** – R$ ${sugPrice.toFixed(2)}\n\n${chatOptions[2].text}`;
-        addBotMessage(msg, chatOptions[2].choices);
-        // Preenche automaticamente o formulário
-        document.getElementById('treatment').value = sugLabel;
-        document.getElementById('price').value = sugPrice.toFixed(2);
-      }, 400);
-    } else if (chatStep === 2) {
-      if (value === 'confirm') {
-        addBotMessage('✔️ Ótimo! Preencha os dados ao lado e confirme o agendamento.');
-        // Não reinicia, deixa o usuário preencher
-      } else {
-        // reset
-        chatStep = 0;
-        selectedTreatment = null;
-        selectedUrgency = null;
-        setTimeout(() => {
-          chatMessagesEl.innerHTML = '';
-          addBotMessage(chatOptions[0].text, chatOptions[0].choices);
-        }, 300);
-      }
-    }
-  }
-
-  // Envio de mensagem via input (texto livre)
-  document.getElementById('chatSendBtn').addEventListener('click', sendChatMessage);
-  document.getElementById('chatInput').addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') sendChatMessage();
-  });
-
-  function sendChatMessage() {
-    const input = document.getElementById('chatInput');
-    const text = input.value.trim();
-    if (!text) return;
-    addUserMessage(text);
-    input.value = '';
-    // Resposta genérica do bot
-    setTimeout(() => {
-      if (chatStep === 0) {
-        addBotMessage('Escolha uma das opções abaixo:', chatOptions[0].choices);
-      } else if (chatStep === 1) {
-        addBotMessage('Escolha a urgência:', chatOptions[1].choices);
-      } else {
-        addBotMessage('Use os botões para confirmar ou recomeçar.', chatOptions[2].choices);
-      }
-    }, 400);
-  }
-
-  // ============================================================
-  //  FORMULÁRIO - CRUD com API
-  // ============================================================
-  const form = document.getElementById('appointmentForm');
-  const feedback = document.getElementById('formFeedback');
-  const listContainer = document.getElementById('appointmentList');
-
-  // Atualizar preço automaticamente ao mudar tratamento
   document.getElementById('treatment').addEventListener('change', function() {
-    const selected = this.value;
-    if (selected && priceMap[selected]) {
-      document.getElementById('price').value = priceMap[selected].toFixed(2);
-    } else {
-      document.getElementById('price').value = '';
-    }
+    const val = this.value;
+    document.getElementById('price').value = priceMap[val] ? priceMap[val].toFixed(2) : '';
   });
 
-  // Carregar agendamentos da API
-  async function loadAppointments() {
-    try {
-      const res = await fetch(API_URL);
-      if (!res.ok) throw new Error('Erro ao carregar');
-      const data = await res.json();
-      renderAppointments(data);
-    } catch (err) {
-      console.error('Erro ao carregar agendamentos:', err);
-      // Fallback: tenta carregar do localStorage
-      const local = localStorage.getItem('appointments');
-      if (local) {
-        renderAppointments(JSON.parse(local));
-      }
-    }
-  }
-
-  function renderAppointments(appointments) {
-    if (!appointments || appointments.length === 0) {
-      listContainer.innerHTML = '<p style="color: #4a6a7f; font-size: 14px;">Nenhum agendamento ainda.</p>';
+  // Carregar lista
+  function loadAppointments() {
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    if (data.length === 0) {
+      listEl.innerHTML = '<p style="color:#4a6a7f;font-size:14px;">Nenhum agendamento ainda.</p>';
       return;
     }
     let html = '';
-    appointments.forEach(app => {
+    data.forEach((app, index) => {
       html += `
-        <div class="appointment-item" data-id="${app.id}">
+        <div class="appointment-item">
           <div class="info">
             <span class="name">${app.name}</span>
             <span class="details">${app.treatment} – R$ ${app.price} • ${app.date} às ${app.time}</span>
           </div>
-          <button class="remove-btn" onclick="deleteAppointment(${app.id})">✕</button>
+          <button class="remove-btn" onclick="removeAppointment(${index})">✕</button>
         </div>
       `;
     });
-    listContainer.innerHTML = html;
+    listEl.innerHTML = html;
   }
 
-  // Enviar novo agendamento
-  form.addEventListener('submit', async function(e) {
+  // Remover
+  window.removeAppointment = function(index) {
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    data.splice(index, 1);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    loadAppointments();
+  };
+
+  // Enviar formulário
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
@@ -688,62 +411,147 @@
     }
 
     const newApp = { name, phone, date, time, treatment, price: parseFloat(price) || 0 };
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    data.push(newApp);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    loadAppointments();
 
-    try {
-      const res = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newApp),
-      });
-      if (!res.ok) throw new Error('Erro ao salvar');
-      const saved = await res.json();
-      // Mostrar feedback
-      feedback.style.display = 'block';
-      setTimeout(() => feedback.style.display = 'none', 4000);
-      // Limpar campos (exceto tratamento/valor)
-      document.getElementById('name').value = '';
-      document.getElementById('phone').value = '';
-      document.getElementById('date').value = '';
-      document.getElementById('time').value = '';
-      // Recarregar lista
-      loadAppointments();
-      // Salvar localmente como fallback
-      const local = JSON.parse(localStorage.getItem('appointments') || '[]');
-      local.push(saved);
-      localStorage.setItem('appointments', JSON.stringify(local));
-    } catch (err) {
-      console.error(err);
-      alert('Erro ao agendar. Verifique se o backend está rodando.');
-    }
+    feedback.style.display = 'block';
+    setTimeout(() => feedback.style.display = 'none', 3000);
+
+    // Limpar campos (menos tratamento/valor)
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('date').value = '';
+    document.getElementById('time').value = '';
+    // Mantém tratamento e valor
   });
 
-  // Deletar agendamento
-  window.deleteAppointment = async function(id) {
-    if (!confirm('Remover este agendamento?')) return;
-    try {
-      const res = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-      if (!res.ok) throw new Error('Erro ao deletar');
-      loadAppointments();
-      // Atualizar localStorage
-      const local = JSON.parse(localStorage.getItem('appointments') || '[]');
-      const filtered = local.filter(app => app.id !== id);
-      localStorage.setItem('appointments', JSON.stringify(filtered));
-    } catch (err) {
-      console.error(err);
-      alert('Erro ao remover.');
+  // ============================================================
+  //  CHAT BOT (com opções)
+  // ============================================================
+  const chatMessages = document.getElementById('chatMessages');
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+
+  let step = 0;
+  let selectedTreatment = null;
+  let selectedUrgency = null;
+
+  const steps = {
+    0: {
+      text: 'Olá! 👋 Qual tratamento você procura?',
+      choices: [
+        { label: '🦷 Limpeza', value: 'Limpeza Profissional' },
+        { label: '🦷 Clareamento', value: 'Clareamento a Laser' },
+        { label: '🦷 Restauração', value: 'Restauração com Resina' },
+        { label: '🦷 Extração', value: 'Extração Simples' },
+        { label: '🦷 Outro', value: 'Consulta + Avaliação' },
+      ]
+    },
+    1: {
+      text: 'Qual a urgência?',
+      choices: [
+        { label: '🔴 Urgente', value: 'urgente' },
+        { label: '🟡 Normal', value: 'normal' },
+        { label: '🟢 Sem pressa', value: 'tranquilo' },
+      ]
+    },
+    2: {
+      text: 'Ótimo! Com base nisso, sugiro:',
+      choices: [
+        { label: '✅ Confirmar', value: 'confirm' },
+        { label: '🔄 Recomeçar', value: 'reset' },
+      ]
     }
   };
 
-  // ============================================================
-  //  INICIALIZAÇÃO
-  // ============================================================
-  initChat();
+  function addMessage(role, text, choices = null) {
+    const div = document.createElement('div');
+    div.className = `message ${role === 'bot' ? 'bot' : 'user'}`;
+    div.innerHTML = text;
+    if (choices) {
+      const grid = document.createElement('div');
+      grid.className = 'options-grid';
+      choices.forEach(choice => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = choice.label;
+        btn.dataset.value = choice.value;
+        btn.addEventListener('click', () => handleChoice(choice.value, choice.label));
+        grid.appendChild(btn);
+      });
+      div.appendChild(grid);
+    }
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function handleChoice(value, label) {
+    addMessage('user', label);
+    if (step === 0) {
+      selectedTreatment = value;
+      step = 1;
+      setTimeout(() => {
+        addMessage('bot', steps[1].text, steps[1].choices);
+      }, 300);
+    } else if (step === 1) {
+      selectedUrgency = value;
+      step = 2;
+      let basePrice = priceMap[selectedTreatment] || 150;
+      if (value === 'urgente') basePrice += 80;
+      const sugText = `💡 **${selectedTreatment}** – R$ ${basePrice.toFixed(2)}<br><br>${steps[2].text}`;
+      // Preenche formulário
+      document.getElementById('treatment').value = selectedTreatment;
+      document.getElementById('price').value = basePrice.toFixed(2);
+      setTimeout(() => {
+        addMessage('bot', sugText, steps[2].choices);
+      }, 300);
+    } else if (step === 2) {
+      if (value === 'confirm') {
+        addMessage('bot', '✔️ Ótimo! Preencha os dados e confirme o agendamento.');
+        // Não reinicia, deixa o usuário agendar
+      } else {
+        // reset
+        step = 0;
+        selectedTreatment = null;
+        selectedUrgency = null;
+        chatMessages.innerHTML = '';
+        setTimeout(() => {
+          addMessage('bot', steps[0].text, steps[0].choices);
+        }, 200);
+      }
+    }
+  }
+
+  function sendTextMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    addMessage('user', text);
+    chatInput.value = '';
+    // Resposta genérica
+    setTimeout(() => {
+      if (step === 0) {
+        addMessage('bot', steps[0].text, steps[0].choices);
+      } else if (step === 1) {
+        addMessage('bot', steps[1].text, steps[1].choices);
+      } else {
+        addMessage('bot', 'Use os botões para confirmar ou recomeçar.', steps[2].choices);
+      }
+    }, 400);
+  }
+
+  chatSend.addEventListener('click', sendTextMessage);
+  chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendTextMessage(); });
+
+  // Inicializa o chat
+  addMessage('bot', steps[0].text, steps[0].choices);
+
+  // Inicializa lista
   loadAppointments();
 
-  // Definir data mínima para hoje
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('date').setAttribute('min', today);
+  // Data mínima (hoje)
+  document.getElementById('date').min = new Date().toISOString().split('T')[0];
 </script>
-
 </body>
 </html>
